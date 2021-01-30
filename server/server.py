@@ -1,15 +1,21 @@
 import socket
 
-class GameObject:
-    def __init__(self,x,y,w,h,c):
-        self.x = x
-        self.y = y
-        self.w = w
-        self.h = h 
-        self.c = c
+class Sever():
+    def __init__(self, id, port):    
+        self.queue = []
+        self.games = []
+        self.ip = "192.168.1.15"
+        self.port = 8888
+        self.addr = (ip, port)
 
+    def player(conn, player):
+        
 
+    def handle_queue():
+        pass
 
-class Player(GameObject):
-    def __init__(self, x, y, w, h, c):
-        super().__init__(x, y, w, h, c)
+    def connect():
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind(self.addr)
+        s.listen()
+        self.handle_queue()
