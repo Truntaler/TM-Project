@@ -20,4 +20,8 @@ class Grid:
                     self.grid[row][col] = Wall(row, col, self.screen_width / self.cols, self.screen_height / self.rows)
                 else:
                     n = random.random()
+                    if n > 0.7 and ((row > 2 and col > 2) or (row < self.rows - 2 and col > 2) or (row > 2 and col < self.cols - 2) or (row < self.rows - 2 and col > self.cols - 2)):
+                        self.grid[row][col] = Box(row, col, self.screen_width / self.cols, self.screen_height / self.rows)
+                    else:
+                        self.grid[row][col] = Spot(row, col, self.screen_width / self.cols, self.screen_height / self.rows)
                     
