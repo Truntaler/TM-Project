@@ -1,15 +1,13 @@
 import pygame
 from bomb import Bomb
+from gameobject import GameObject
 
 
-class Player():
-    def __init__(self, ip, name, x, y, color, game):
+class Player(GameObject):
+    def __init__(self, x, y, width, height, ip, name, color, game):
+        super().__init__(x, y, width, height)
         self.ip = ip 
         self.name = name
-        self.x = x
-        self.y = y
-        self.width = 10
-        self.height = 10
         self.color = color
         self.vel = 10
         self.bomb_cap = 1
@@ -19,20 +17,14 @@ class Player():
         self.can_kick = False
         self.games_won = 0
         self.game = game
-        self.load()
+        self.load("./test_bg.jpg")
 
-    def load(self):
-        self.sprite = self.load().convert_alpha()
-        self.rect = self.sprite.get_rect(topleft=(self.x,self.y))
-
-    def update(self, win):
-        win.blit(self.sprite,self.rect)
-
+    
     def place(self, x, y):
         if len(self.bombs) <= self.bomb_cap:
             x = self.x
             y = self.y
-            self.bombs.append(Bomb(self.centerx, self.centery, self.color, self.exp_range))
+            self.bombs.append(Bomb(self.rect.centerx, self.rect.centery, self.color, self.exp_range))
 
         
     def move(self, x, y):
@@ -50,3 +42,4 @@ class Player():
 
     def get_name(self):            
         return self.name
+

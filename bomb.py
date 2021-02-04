@@ -2,7 +2,7 @@ import pygame
 from explosion import Explosion
 
 class Bomb():
-    def __init__(self, x, y, color, exp_range, r = 10):
+    def __init__(self, x, y, width, height, color, exp_range):
         self.x = x
         self.y = y
         self.color = color
@@ -12,7 +12,7 @@ class Bomb():
         self.load()
     
     def load(self):
-        self.sprite = self.load().convert_alpha()
+        self.sprite = self.pygame.load().convert_alpha()
         self.rect = self.sprite.get_rect(topleft=(self.x,self.y))
 
     def update(self,win):
